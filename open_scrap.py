@@ -2,6 +2,12 @@
     ex : python open_scrap.py LINK_TO_OPEN_DIRECTORY
     TODO :
         -> Add another variable for concurrent multiple download.
+            {
+                - spawn one terminal for each download.? (1)
+                - Hide terminal? (option?)
+                - show size of file before download and check once downloded file size. ?
+            }
+    
 '''
 
 import os
@@ -18,7 +24,15 @@ if 'data' not in os.listdir():
 res = requests.get(url)
 bob = bsp(res.content, 'html.parser')
 
-os.chdir('data')
+os.chdir('./data')
+
+class scrapper():
+    
+    def __init__(slef,origin,multi=False):
+        self.origin = origin
+        self.multi = multi
+
+    def scrap(self, flag):
 
 #bob is response object
 def stacker(bob):
